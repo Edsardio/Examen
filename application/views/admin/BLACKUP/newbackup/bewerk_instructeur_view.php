@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Bewerk Instructeur</title>
+	<title>User Gegevens</title>
 	<script src="<?= $this -> config -> base_url(); ?>/application/views/assets/js/jquery-2.1.4.min.js"></script>
 	<script src="<?= $this -> config -> base_url(); ?>application/views/assets/library/jquery.min.js"></script>
 
@@ -37,13 +37,10 @@ if (!isset($_SESSION['user_id'])) {
 	</script>
 	<style>
 		body {
-			overflow: hidden;
+			overflow: scroll;
 		}
 		.field > h5{
 			float:left;
-		}
-		.pusher{
- 			background-attachment: fixed;
 		}
 		#headerpicture{
 			    background-color: transparent;
@@ -74,50 +71,51 @@ if (!isset($_SESSION['user_id'])) {
 
 	<div class="ui middle aligned center aligned grid">
 		<div class="row">
-			<div class="six wide column">
+			<div class="six wide column" style="margin-left: 3px;">
 				<div class="ui segment">
 					<h2>
-						Bewerkt boot: <?= $bootnaam; ?>
+						Instructeurs
 					</h2>
 				</div>
 			</div>
-			<div class="two wide right aligned column create_user" style="margin-left:31px;">
+			<div class="five wide right aligned column create_user" style="margin-left:55px;">
 				<center>
-					<button onclick="location.href='<?= site_url('admin/boten');?>'" class="ui large primary button">Annuleren</button>
+					
+					<button onclick="location.href='<?= site_url('admin/instructeur');?>'" class="ui large primary button">Go Back</button>
 				</center>
 			</div>
 		</div>
 		<div class="row">
 		<div class="sixteen wide column">
 			<div class="ui stacked segment">
-				<?= form_open('admin/Boten/update', 'role="form" class="ui form"'); ?>
+				<?= form_open('admin/Instructeur/update', 'role="form" class="ui form"'); ?>
 					<div class="field">
-						<h5>Bootnaam</h5>
-						<input type="text" class="form-control" id="bootnaam" name="bootnaam" value="<?= $bootnaam; ?>">
+						<h5>Voornaam</h5>
+						<input type="text" class="form-control" id="instructeur_voornaam" name="instructeur_voornaam" value="<?=$voornaam;?>">
 					</div>
 					<div class="field">
-						<h5>Bouwjaar</h5>
-						<input type="date" class="form-control" id="bouwjaar" name="bouwjaar" value="<?= $bouwjaar; ?>">
+						<h5>Tussenvoegsel</h5>
+						<input type="text" class="form-control" id="instructeur_tussenvoegsel" name="instructeur_tussenvoegsel" value="<?=$tussenvoegsel;?>">
 					</div>
 					<div class="field">
-						<h5>Type</h5>
-						<select id="type_id" name="type_id">
-							<?php
-							$ttype = json_decode($typen); 
-							foreach($ttype as $type){
-								if($type->type_id = $boottype){
-									$active = 'selected';
-								}else{
-									$active = ' ';
-								}
-								echo '<option ' . $active . ' value="' . $type->type_id . '">' . $type->boottype . '</option>';
-							}
-							?>
+						<h5>Achternaam</h5>
+						<input type="text" class="form-control" id="instructeur_achternaam" name="instructeur_achternaam" value="<?=$achternaam;?>">
+					</div>
+					<div class="field">
+						<h5>Geslacht</h5>
+						<select id="instructeur_geslacht" name="instructeur_geslacht" class="form-control">
+							<option value="<?=$geslacht;?>"><?=$geslacht;?></option>
+							<option value="man">Man</option>
+							<option value="vrouw">Vrouw</option>
 						</select>
+					</div>
+					<div class="field">
+						<h5>E-mail</h5>
+						<input type="email" class="form-control" id="instructeur_email" name="instructeur_email" value="<?=$email;?>">
 					</div>
 					<input type="hidden" name="id" value="<?= $id; ?>" />
 					<input type="submit" name="mit" class="ui button primary" value="Opslaan">
-					<button type="button" onclick="location.href='<?= site_url('admin/boten');?>'" class="ui button btn-success">Annuleren</button>
+					<button type="button" onclick="location.href='<?= site_url('admin/instructeur');?>'" class="ui button btn-success">Annuleren</button>
 				</form>
 				<?= form_close(); ?>
 

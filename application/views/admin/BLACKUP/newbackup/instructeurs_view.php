@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Instructeur Gegevens</title>
+	<title>User Gegevens</title>
 	<script src="<?= $this -> config -> base_url(); ?>/application/views/assets/js/jquery-2.1.4.min.js"></script>
 	<script src="<?= $this -> config -> base_url(); ?>application/views/assets/library/jquery.min.js"></script>
 
@@ -69,10 +69,10 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body class="pushable">
 <?php include 'layout/menu_follow.php'; ?>
-<div class="pusher" style="background-attachment: fixed; background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
+<div class="pusher" style="background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
 <!-- Modal Edit User -->
 		<div class="ui small modal" id="create_user">
-			<div class="header">Cree&#235;er Instructeur</div>
+			<div class="header">Create New User</div>
 			<div class="content">
 				<?= form_open('admin/Instructeur/save', 'role="form" class="ui form"'); ?>
 					<div class="field">
@@ -123,12 +123,13 @@ if (!isset($_SESSION['user_id'])) {
 					</h2>
 				</div>
 			</div>
-			<div class="two wide right aligned column create_user" style="margin-left:55px;">
+			<div class="five wide right aligned column create_user" style="margin-left:55px;">
 				<center>
-					<button data-modal="create_user" id="call-modal-4" class="ui large primary button">Nieuwe Instructeur</button>
+					<button data-modal="create_user" id="call-modal-4" class="ui large primary button">Create User</button>
 				</center>
 			</div>
 		</div>
+		<div class="row">
 		<div class="sixteen wide column">
 			<div class="ui stacked segment">
 				<table class="ui celled table">
@@ -172,6 +173,7 @@ if (!isset($_SESSION['user_id'])) {
 				</tbody>
 			</table>
 			</div>
+		</div>
 		</div>
 	</div>
 	<div class="ui middle aligned center aligned grid">

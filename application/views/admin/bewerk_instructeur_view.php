@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>User Gegevens</title>
+	<title>Bewerk Instructeur</title>
 	<script src="<?= $this -> config -> base_url(); ?>/application/views/assets/js/jquery-2.1.4.min.js"></script>
 	<script src="<?= $this -> config -> base_url(); ?>application/views/assets/library/jquery.min.js"></script>
 
@@ -37,11 +37,16 @@ if (!isset($_SESSION['user_id'])) {
 	</script>
 	<style>
 		body {
-			overflow: scroll;
-			background-color: #dedede;
+			overflow: hidden;
 		}
 		.field > h5{
 			float:left;
+		}
+		.pusher{
+ 			background-attachment: fixed;
+		}
+		#headerpicture{
+			    background-color: transparent;
 		}
 		.column {
 			max-width: 1000px;
@@ -59,9 +64,9 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body class="pushable">
 <?php include 'layout/menu_follow.php'; ?>
-<div class="pusher">
+<div class="pusher" style="background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
 <!-- Modal Edit User -->
-	<div id="headerpicture" class="ui inverted vertical masthead aligned segment" style="background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
+	<div id="headerpicture" class="ui inverted vertical masthead aligned segment">
 		<?php
 		include 'layout/menu_main.php';
 		?>
@@ -69,16 +74,16 @@ if (!isset($_SESSION['user_id'])) {
 
 	<div class="ui middle aligned center aligned grid">
 		<div class="row">
-			<div class="six wide column" style="margin-left: 3px;">
+			<div class="six wide column">
 				<div class="ui segment">
 					<h2>
 						Instructeurs
 					</h2>
 				</div>
 			</div>
-			<div class="five wide right aligned column create_user" style="margin-left:55px;">
+			<div class="two wide right aligned column create_user" style="margin-left:31px;">
 				<center>
-					<button data-modal="create_user" id="call-modal-4" class="ui large primary button">Create User</button>
+					<button onclick="location.href='<?= site_url('admin/instructeur');?>'" class="ui large primary button">Annuleren</button>
 				</center>
 			</div>
 		</div>
@@ -111,8 +116,8 @@ if (!isset($_SESSION['user_id'])) {
 						<input type="email" class="form-control" id="instructeur_email" name="instructeur_email" value="<?=$email;?>">
 					</div>
 					<input type="hidden" name="id" value="<?= $id; ?>" />
-					<input type="submit" name="mit" class="btn btn-primary" value="Opslaan">
-					<button type="button" onclick="location.href='<?= site_url('admin/instructeur');?>'" class="btn btn-success">Annuleren</button>
+					<input type="submit" name="mit" class="ui button primary" value="Opslaan">
+					<button type="button" onclick="location.href='<?= site_url('admin/instructeur');?>'" class="ui button btn-success">Annuleren</button>
 				</form>
 				<?= form_close(); ?>
 
@@ -129,13 +134,5 @@ if (!isset($_SESSION['user_id'])) {
 		</div>
 	</div>
 </div>
-<script>
-$('center .button').on('click', function(){
-	modal = $(this).attr('data-modal');
-	$('#'+modal+'.modal').modal('show');
-});
-</script>
-
-<?php include 'layout/footer.php'; ?>
 </body>
 </html>

@@ -9,15 +9,15 @@ class Gebruikers extends CI_Controller{
 	
 	public function index(){
 		$data['data_get'] = $this->Gebruikers_model->view();
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/gebruikers_view', $data);
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function add(){
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/nieuwe_gebruiker_view');
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function edit(){
@@ -38,9 +38,9 @@ class Gebruikers extends CI_Controller{
 		$data['mobiel'] = $dt[0]->mobiel;
 		$data['email'] = $dt[0]->email;
 		$data['id'] = $kd;
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/bewerk_gebruiker_view', $data);
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function delete(){

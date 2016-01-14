@@ -2,6 +2,7 @@
 class Login_model extends CI_Model{
 	public function __construct(){
 		$this->load->database();
+
 	}
 	
 	public function checkUser($email, $password){
@@ -19,7 +20,11 @@ class Login_model extends CI_Model{
 				$_SESSION['user_group'] = $userRow['group_id'];
 				$_SESSION['user_id'] = $row['klant_id'];
 				$_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
-				header('Location: ../details');
+				if($_SESSION['user_group'] == '3'){
+					redirect('/superadmin/testpage');
+				} else {
+					header('Location: ../details');
+				}
 			}else{
 				return "Onjuiste gegevens.";
 			}

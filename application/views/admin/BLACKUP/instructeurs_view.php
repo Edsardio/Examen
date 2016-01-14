@@ -37,14 +37,14 @@ if (!isset($_SESSION['user_id'])) {
 	</script>
 	<style>
 		body {
-			overflow: scroll;
-			background-color: #dedede;
+			overflow: hidden;
 		}
 		th{
 			margin-bottom:10px;
 		}
-		tr:nth-child(even) {background-color: #f2f2f2}
-
+		tr:nth-child(even) {
+			background-color: #f2f2f2
+		}
 		tr:hover{
 			background-color:yellow;
 		}
@@ -75,27 +75,27 @@ if (!isset($_SESSION['user_id'])) {
 	<div class="header">Create New User</div>
 	<div class="content">
 		<?= form_open('admin/Instructeur/save', 'role="form" class="ui form"'); ?>
-			<div class="form-group">
-				<label for="instructeur_voornaam">Voornaam</label>
+			<div class="field">
+				<h5>Voornaam</h5>
 				<input type="text" class="form-control" id="instructeur_voornaam" name="instructeur_voornaam">
 			</div>
-			<div class="form-group">
-				<label for="instructeur_tussenvoegsel">Tussenvoegsel</label>
+			<div class="field">
+				<h5>Tussenvoegsel</h5>
 				<input type="text" class="form-control" id="instructeur_tussenvoegsel" name="instructeur_tussenvoegsel">
 			</div>
-			<div class="form-group">
-				<label for="instructeur_achternaam">Achternaam</label>
+			<div class="field">
+				<h5>Achternaam</h5>
 				<input type="text" class="form-control" id="instructeur_achternaam" name="instructeur_achternaam">
 			</div>
-			<div class="form-group">
-				<label for="instructeur_geslacht">Geslacht</label>
+			<div class="field">
+				<h5>Geslacht</h5>
 				<select id="instructeur_geslacht" name="instructeur_geslacht" class="form-control">
 					<option value="man">Man</option>
 					<option value="vrouw">Vrouw</option>
 				</select>
 			</div>
-			<div class="form-group">
-				<label for="instructeur_email">E-mail</label>
+			<div class="field">
+				<h5>E-mail</h5>
 				<input type="email" class="form-control" id="instructeur_email" name="instructeur_email">
 			</div>
 			<br>
@@ -124,7 +124,9 @@ if (!isset($_SESSION['user_id'])) {
 				</div>
 			</div>
 			<div class="five wide right aligned column create_user" style="margin-left:55px;">
-				<button data-modal="create_user" id="call-modal-4" class="ui large primary button">Create User</button>
+				<center>
+					<button data-modal="create_user" id="call-modal-4" class="ui large primary button">Create User</button>
+				</center>
 			</div>
 		</div>
 		<div class="row">
@@ -188,24 +190,6 @@ $('center .button').on('click', function(){
 	modal = $(this).attr('data-modal');
 	$('#'+modal+'.modal').modal('show');
 });
-$('create_user .button').on('click', function(){
-	modal = $(this).attr('data-modal');
-	$('#'+modal+'.modal').modal('show');
-});
-$('center .icon').on('click', function(){
-	modal = $(this).attr('data-modal');
-	$('#'+modal+'.modal').modal('show');
-});
-$('center .icon').on('click', function(){
-	modal = $(this).attr('data-modal');
-	$('#'+modal+'.modal').modal('show');
-});
-$('center .icon').on('click', function(){
-	modal = $(this).attr('data-modal');
-	$('#'+modal+'.modal').modal('show');
-});
 </script>
-
-<?php include 'layout/footer.php'; ?>
 </body>
 </html>

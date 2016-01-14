@@ -24,13 +24,19 @@ class Boten_model extends CI_Model{
 			foreach($data->result() as $boot){
 				$boten[] = $boot;
 			}
-			return $boten;
+			$type = $this->db->query('SELECT * FROM typen');
+			$response['d'] = $boten;
+			$response['type'] = $type->result();
+			return $response;
 		}
 	}
 	
 	public function edit($a){
 		$d = $this->db->get_where('boten', array('boot_id' => $a));
-		return $d->result();
+		$type = $this->db->query('SELECT * FROM typen');
+		$response['d'] = $d->result();
+		$response['type'] = $type->result();
+		return $response;
 	}
 	
 	public function delete($a){

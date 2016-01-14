@@ -9,15 +9,15 @@ class Reserveringen extends CI_Controller{
 	
 	public function index(){
 		$data['data_get'] = $this->Reserveringen_model->view();
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/reserveringen_view', $data);
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function add(){
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/nieuwe_reservering_view');
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function edit(){
@@ -29,9 +29,9 @@ class Reserveringen extends CI_Controller{
 		$dt = $this->Reserveringen_model->edit($kd, $ci);
 		$data['cursus_id'] = $ci;
 		$data['id'] = $kd;
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/bewerk_reservering_view', $data);
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function delete(){

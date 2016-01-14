@@ -8,16 +8,18 @@ class Boten extends CI_Controller{
 	}
 	
 	public function index(){
-		$data['data_get'] = $this->Boten_model->view();
-		$this->load->view('admin/crud_header');
+		$dt = $this->Boten_model->view();
+		$data['data_get'] = $dt['d'];
+		$data['typen'] = json_encode($dt['type']);
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/boten_view', $data);
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function add(){
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/nieuwe_boot_view');
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function edit(){
@@ -26,13 +28,14 @@ class Boten extends CI_Controller{
 			redirect('admin/Boten');
 		}
 		$dt = $this->Boten_model->edit($kd);
-		$data['bootnaam'] = $dt[0]->bootnaam;
-		$data['bouwjaar'] = $dt[0]->bouwjaar;
-		$data['boottype'] = $dt[0]->type_id;
+		$data['bootnaam'] = $dt['d'][0]->bootnaam;
+		$data['bouwjaar'] = $dt['d'][0]->bouwjaar;
+		$data['boottype'] = $dt['d'][0]->type_id;
+		$data['typen'] = json_encode($dt['type']);
 		$data['id'] = $kd;
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/bewerk_boot_view', $data);
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function delete(){

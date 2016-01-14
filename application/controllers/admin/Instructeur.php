@@ -9,15 +9,15 @@ class Instructeur extends CI_Controller{
 	
 	public function index(){
 		$data['data_get'] = $this->Instructeur_model->view();
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/instructeurs_view', $data);
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function add(){
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/nieuwe_instructeur_view');
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function edit(){
@@ -32,9 +32,9 @@ class Instructeur extends CI_Controller{
 		$data['geslacht'] = $dt[0]->instructeur_geslacht;
 		$data['email'] = $dt[0]->instructeur_email;
 		$data['id'] = $kd;
-		$this->load->view('admin/crud_header');
+		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/bewerk_instructeur_view', $data);
-		$this->load->view('admin/crud_footer');
+		// $this->load->view('admin/crud_footer');
 	}
 	
 	public function delete(){

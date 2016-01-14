@@ -14,10 +14,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Register Example - Semantic</title>
 	<?php include 'layout/scripts.php' ?>
 
+	<?php $data = json_decode($cursussen); ?>
+	
 	<style type="text/css">
 		body {
 			background-color: #DADADA;
-			overflow:hidden;
+			overflow: hidden;
 		}
 		body > .grid {
 			height: 100%;
@@ -39,67 +41,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body style="background-image:url('<?= $this -> config -> base_url(); ?>application/views/assets/img/boten/boot3.jpg');  background-size: 100% 100%; background-repeat: no-repeat;">
-<?php include 'layout/menu_main.php'; ?>
-	<?php
-	$attributes = array('method' => 'POST', 'class' => 'ui large form', 'id' => 'inplannen');
-	$naam = array('name' => 'naam', 'id' => 'naam', 'placeholder' => 'Cursus naam', 'type' => 'text');
-	$niveaujs = 'id="niveau" onChange="getCursusDetails();" name="niveau"';
-	$niveau = array('leeg' => '', 'Beginner' => 'Beginner', 'Gevorderde' => 'Gevorderde', 'Wadtocht' => 'Wadtocht');
-	$description = array('id' => 'description', 'placeholder' => 'Cursus beschrijving', 'name' => 'description');
-	$startdatum = array('name' => 'startdatum', 'id' => 'startdatum', 'placeholder' => 'Start datum', 'type' => 'date', 'onChange' => 'datumStart();');
-	$einddatum = array('name' => 'einddatum', 'id' => 'einddatum', 'placeholder' => 'Eind datum', 'type' => 'date', 'onChange' => 'datumEnd();');
-	?>
-	<div style="margin-top:-200px;"></div>
-	<div class="ui middle aligned center aligned grid" >
-		<div class="column" style="top:200px;">
+	<div class="ui middle aligned center aligned grid">
+		<div class="column">
 			<h2 class="ui image header message large"><img src="<?= $this -> config -> base_url(); ?>application/views/assets/img/de_waai_logo.jpg" class="image">
-			<div class="content">
-				Maak een nieuwe cursus aan
-			</div></h2>
+				<div class="content">
+					Cursussen
+				</div>
+			</h2>
+			<?php
+			if(isset($response)){
+				?>
+				<h2 class="ui image header message large">
+					<div class="content">
+				<?= $response; ?>
+					</div>
+				</h2>
+			<?php } ?>
 			<div class="ui stacked segment">
-				<?= form_open('admin/Inplannen/newCursus', $attributes); ?>
-				<div class="two fields">
-					<div class="field">
-						<div class="ui left icon labeled input">
-							<!-- <i class="user icon"></i> -->
-							<?= form_input($naam); ?>
-						</div>
-					</div>
-					<div class="field">
-						<div class="ui left icon input">
-							<!-- <i class="user icon"></i> -->
-							<?= form_dropdown('niveau', $niveau, 'leeg', $niveaujs); ?>
-						</div>
-					</div>
-				</div>
-				<div id="details" style="text-align: left;"></div>
-				<br>
-				<div class="field">
-					<div class="ui left icon labeled input">
-						<!-- <i class="user icon"></i> -->
-						<?= form_textarea($description); ?>
-					</div>
-				</div>
-				<div class="two fields">
-					<div class="field">
-						<div class="ui left icon labeled input">
-							<!-- <i class="mail icon"></i> -->
-							<?= form_input($startdatum); ?>
-						</div>
-					</div>
-					<div class="field">
-						<div class="ui left icon labeled input">
-							<!-- <i class="lock icon"></i> -->
-							<?= form_input($einddatum); ?>
-						</div>
-					</div>
-				</div>
-				<?= form_submit('submit', 'Maak cursus', 'class="ui fluid large teal submit button"'); ?>
+				<table class="ui celled table">
+					<thead>
+					<tr>
+						<th width="80px">ID</th>
+						<th>Cursusnaam</th>
+						<th>Startdatum</th>
+						<th>Einddatum</th>
+						<th>Niveau</th>
+						<th>Inplannen</th>
+					</tr>
+					</thead>
+					<tbody>
+					<?php
+					if($data == NULL){
+						?>
+						<div class="alert alert-info" role="alert">Geen gegevens gevonden!</div>
+						<?php
+						}else{
+						foreach($data as $row){
+							?>
+							<tr>
+								<td><?= $row -> cursus_id; ?></td>
+								<td><?= $row -> cursusnaam; ?></td>
+								<td><?= $row -> startdatum; ?></td>
+								<td><?= $row -> einddatum; ?></td>
+								<td><?= $row -> niveau; ?></td>
+								<td>
+									<a href="<?= site_url('admin/inplannen/cursus/' . $row -> cursus_id); ?>"><button>Inplannen</button></a>
+								</td>
+							</tr>
+							<?php
+							}
+							}
+					?>
+					</tbody>
+				</table>
 			</div>
-			<?= form_close(); ?>
 		</div>
 	</div>
-
-	<input type="hidden" data-url="<?=$this -> config -> base_url(); ?>" id="data-url">
 </body>
 </html>

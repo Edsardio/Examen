@@ -86,7 +86,7 @@ class Inschrijven extends CI_Controller {
 			');
 
 			$this->email->send();
-			header('Location: ' . $this->config->base_url() . 'inschrijven');
+			header('Location: ' . $this->config->base_url() . 'mijncursussen');
 		}
 
 	}

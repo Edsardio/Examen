@@ -21,7 +21,7 @@ class Cursussen_model extends CI_Model{
 			'startdatum' => $start,
 			'einddatum' => $eind,
 			'niveau' => niveau,
-			'type_id' => $type
+			'type_id' => $type_id
 		);
 		$this->db->insert('cursussen', $data);
 	}
@@ -32,13 +32,19 @@ class Cursussen_model extends CI_Model{
 			foreach($data->result() as $cursus){
 				$cursussen[] = $cursus;
 			}
-			return $cursussen;
+			$type = $this->db->query('SELECT * FROM typen');
+			$response['d'] = $cursussen;
+			$response['type'] = $type->result();
+			return $response;
 		}
 	}
 	
 	public function edit($a){
-		$d = $this->db->get_where('cursussen', array('cursus_id' => $a));
-		return $d->result();
+		$d = $this->db->query('SELECT * FROM cursussen INNER JOIN typen WHERE cursussen.cursus_id = '. $a .' AND typen.type_id = cursussen.type_id');
+		$type = $this->db->query('SELECT * FROM typen');
+		$response['d'] = $d->result();
+		$response['type'] = $type->result();
+		return $response;
 	}
 	
 	public function delete($a){
@@ -60,8 +66,8 @@ class Cursussen_model extends CI_Model{
 			'cursusomschrijving' => $omschrijving,
 			'startdatum' => $start,
 			'einddatum' => $eind,
-			'$niveau' => niveau,
-			'type_id' => $type
+			'niveau' => $niveau,
+			'type_id' => $type_id
 		);
 		$this->db->where('cursus_id', $id);
 		$this->db->update('cursussen', $data);

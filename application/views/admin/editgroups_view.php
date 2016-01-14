@@ -1,8 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-if (!isset($_SESSION['user_id'])) {
-    header('Location: home');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +13,6 @@ if (!isset($_SESSION['user_id'])) {
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <!-- Site Properties -->
     <?php include 'layout/scripts.php' ?>
-    <?php $data_get = json_decode($json); ?>
 
     <link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/library/Semantic/components/dropdown.css">
     <script>
@@ -120,7 +116,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="six wide column" style="margin-left: 3px;">
                 <div class="ui segment">
                     <h2>
-                        Mijn cursussen
+                        Gebruikers & Rechten
                     </h2>
                 </div>
             </div>
@@ -131,35 +127,45 @@ if (!isset($_SESSION['user_id'])) {
                     <table class="ui celled table">
                         <thead>
                         <tr>
-                            <th>Cursusnaam</th>
-                            <th>Cursusprijs</th>
-                            <th>Cursusomschrijving</th>
-                            <th>Startdatum</th>
-                            <th>Einddatum</th>
-                            <th>Niveau</th>
+                            <th>Gebruiker ID</th>
+                            <th>Voornaam</th>
+                            <th>Tussenvoegsel</th>
+                            <th>Achternaam</th>
+                            <th>Woonplaats</th>
+                            <th>Group ID</th>
+                            <th>Group name</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
                         if($data_get == NULL){
                             ?>
-                            <div class="alert alert-info" role="alert">Geen gegevens gevonden!</div>
+                            <div class="alert alert-info" role="alert">Geen klanten gevonden!</div>
                             <?php
                         }else{
                             foreach($data_get as $row){
                                 ?>
                                 <tr>
-                                    <td><?= $row->cursusnaam; ?></td>
-                                    <td><?= $row->cursusprijs; ?></td>
-                                    <td><?= $row->cursusomschrijving; ?></td>
-                                    <td><?= $row->startdatum; ?></td>
-                                    <td><?= $row->einddatum; ?></td>
-                                    <td><?= $row->niveau; ?></td>
+                                    <td><?= $row->klant_id; ?></td>
+                                    <td><?= $row->voornaam; ?></td>
+                                    <td><?= $row->tussenvoegsel; ?></td>
+                                    <td><?= $row->achternaam; ?></td>
+                                    <td><?= $row->woonplaats; ?></td>
+                                    <td><?= $row->group_id; ?></td>
+                                    <td><select name="per1" id="per1">
+                                            <?php
+                                            foreach($fillSelect as $name) { ?>
+                                                <option value="<?= $name->group_name ?>"><?= $name->group_name ?></option>
+                                                <?php
+                                            } ?>
+                                        </select></td>
+                                    <?php
+                                    }
+                                    }
+                                    ?>
                                 </tr>
-                                <?php
-                            }
-                        }
-                        ?>
+
+
                         </tbody>
                     </table>
                 </div>

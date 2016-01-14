@@ -1,3 +1,6 @@
+	.pusher{
+		background-attachment: fixed ;
+	}
     .hidden.menu {
       display: none;
     }
@@ -84,6 +87,7 @@
     }
 #headerpicture {
     background-position: 0px -200px;
+    border-bottom: none;
 }
 .menu-icon{
 	background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/menu-alt-512.png');
