@@ -17,11 +17,17 @@ class Login_model extends CI_Model{
 											   WHERE klant_id = "' . $row['klant_id'] . '"');
 				$userRow = $userQuery->row_array();
 				session_start();
-				$_SESSION['user_group'] = $userRow['group_id'];
+				if($userRow['group_id'] == '3'){
+					$_SESSION['admin_group'] = $userRow['group_id'];
+					$_SESSION['user_group'] = '2';
+				}else{
+					$_SESSION['admin_group'] = '1';
+					$_SESSION['user_group'] = $userRow['group_id'];
+				}
 				$_SESSION['user_id'] = $row['klant_id'];
 				$_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
-				if($_SESSION['user_group'] == '3'){
-					redirect('/superadmin/testpage');
+				if($_SESSION['admin_group'] == '3'){
+					redirect('admin/editgroups');
 				} else {
 					header('Location: ../details');
 				}

@@ -107,7 +107,7 @@ $description = array('id' => 'description', 'placeholder' => 'Eventuele opmerkin
 				</table>
 				
 				<?= form_textarea($description); ?> <br>
-				<input type="submit" value="Inschrijven"><a href="<?= site_url('inschrijven/inschrijven/' . $cursus_id); ?>"></a></input>
+				<input type="submit" class"ui button" value="Inschrijven"><a href="<?= site_url('inschrijven/inschrijven/' . $cursus_id); ?>"></a></input>
 				</form>
 			<?= form_close(); ?>
 			</div>
@@ -123,5 +123,7 @@ $description = array('id' => 'description', 'placeholder' => 'Eventuele opmerkin
 		</div>
 	</div>
 </div>
+
+<?php include 'layout/footer.php'; ?>
 </body>
 </html>

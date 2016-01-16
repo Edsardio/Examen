@@ -48,6 +48,11 @@ class Cursussen_model extends CI_Model{
 	}
 	
 	public function delete($a){
+		$data = array(
+			'cursus_id' => NULL
+		);
+		$this->db->where('cursus_id', $a);
+		$this->db->update('koppelingen', $data);
 		$this->db->delete('cursussen', array('cursus_id' => $a));
 		return;
 	}

@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if (!isset($_SESSION['user_id'])) {
 	header('Location: home');
 }
-echo $this->uri->segment(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">

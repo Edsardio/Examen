@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-if (!isset($_SESSION['user_id'])) {
-	header('Location: home');
+if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
+	header('Location: ../home');
 }
 ?>
 <!DOCTYPE html>
@@ -186,6 +186,7 @@ if (!isset($_SESSION['user_id'])) {
 						</tr>
 					</thead>
 					<tbody>
+						
 						<?php
 						if($data_get == NULL){
 						?>
@@ -210,9 +211,21 @@ if (!isset($_SESSION['user_id'])) {
 									<td><?= $row->niveau; ?></td>
 									<td>
 										<a href="<?= site_url('admin/gebruikers/edit/' . $row->klant_id); ?>" class="btn btn-warning btn-xs"><i class="circular inverted yellow write icon"></i></a>
-										<a href="<?= site_url('admin/gebruikers/delete/' . $row->klant_id); ?>" class="btn btn-danger btn-xs"><i class="circular inverted red trash outline user icon"></i></a>
+										<a href="#" id="delete<?= $row->klant_id; ?>" class="btn btn-danger btn-xs"><i class="circular inverted red trash outline user icon"></i></a>
 									</td>
 								</tr>
+								<div class="ui modal delete<?= $row->klant_id; ?>">
+								  <div class="header">Verwijder klant: <?= $row->klant_voornaam . $row->klant_tussenvoegsel . $row->klant_achternaam; ?></div>
+								  <div class="content"><p>Weet u zeker dat u de geselecteerde klant wilt verwijderen?</p></div>
+								  <div class="actions"><div class="negative ui button">Annuleren</div><a href="<?= site_url('admin/Gebruikers/delete/' . $row->klant_id); ?>"><div class="ui positive right labeled icon button">Verwijderen<i class="trash icon"></i></div></a></div>
+								</div>
+								<script>
+								$('#delete<?= $row->klant_id; ?>').on('click', function(){
+									$('.ui.modal.delete<?= $row->klant_id; ?>')
+								  		.modal('show')
+									;
+								});
+								</script>
 								<?php 
 							}
 						}
@@ -231,6 +244,8 @@ if (!isset($_SESSION['user_id'])) {
 		</div>
 	</div>
 </div>
+
+<?php include 'layout/footer.php'; ?>
 <script>
 $('center .button').on('click', function(){
 	modal = $(this).attr('data-modal');

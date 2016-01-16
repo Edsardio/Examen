@@ -15,14 +15,23 @@ class Editgroups_model extends CI_Model{
             return $users;
         }
     }
-    public function getRoles(){
-        $group = $this->db->query('SELECT group_id, group_name FROM groups WHERE group_id != 3');
-        return $group->result();
-        }
 
-    public function edit($a){
-        $d = $this->db->get_where('instructeurs', array('instructeur_id' => $a));
-        return $d->result();
+    public function getUserRoles($kd){
+        $dt = $this->db->query('SELECT * FROM klanten INNER JOIN groups, user_group WHERE klanten.klant_id = user_group.klant_id AND groups.group_id = user_group.group_id AND klanten.klant_id = "'. $kd .'"');
+        return $dt->result();
     }
+
+    public function updateUserRoles($klant_id, $group_id){
+
+        $data = array(
+            'group_id' => $group_id
+
+        );
+        $this->db->where('klant_id', $klant_id);
+        $this->db->update('user_group', $data);
+    }
+
+
+
 
 }

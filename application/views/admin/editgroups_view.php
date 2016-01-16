@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
+	header('Location: ../home');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,6 +137,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>Woonplaats</th>
                             <th>Group ID</th>
                             <th>Group name</th>
+                            <th>Edit</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -152,13 +156,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td><?= $row->achternaam; ?></td>
                                     <td><?= $row->woonplaats; ?></td>
                                     <td><?= $row->group_id; ?></td>
-                                    <td><select name="per1" id="per1">
-                                            <?php
-                                            foreach($fillSelect as $name) { ?>
-                                                <option value="<?= $name->group_name ?>"><?= $name->group_name ?></option>
-                                                <?php
-                                            } ?>
-                                        </select></td>
+                                    <td><?= $row->group_name; ?></td>
+                                    <td>
+                                        <a href="<?= site_url('admin/Editgroups/getUser/' . $row->klant_id); ?>"><button>Edit</button></a>
+                                    </td>
                                     <?php
                                     }
                                     }
@@ -181,6 +182,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
+
+<?php include 'layout/footer.php'; ?>
 <script>
     $('center .button').on('click', function(){
         modal = $(this).attr('data-modal');

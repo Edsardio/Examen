@@ -99,15 +99,15 @@ if (isset($_SESSION['user_id'])) {
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
-           <?= form_input('email', '', 'placeholder="Voer uw e-mail adres in."'); ?>
+           <?= form_input('email', '', 'placeholder="Voer uw e-mail adres in." id="input"'); ?>
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
-            <?= form_password('password', '', 'placeholder="Voer uw wachtwoord in." class="password"'); ?>
+            <?= form_password('password', '', 'placeholder="Voer uw wachtwoord in." class="password" id="input2"'); ?>
           </div>
         </div>
-        <?= form_submit('submit', 'Inloggen', 'class="ui fluid large blue submit button"', 'style="color:#fff;'); ?>
+        <?= form_submit('submit', 'Inloggen', 'class="ui fluid large blue submit button" id="inloggen"', 'style="color:#fff;'); ?>
       </div>
       <div class="ui error message"></div>
     <?= form_close(); ?>
@@ -116,4 +116,24 @@ if (isset($_SESSION['user_id'])) {
     </div>
   </div>
 </div>
-</body></html>
+<script>
+	$.fn.enterKey = function (fnc) {
+	    return this.each(function () {
+	        $(this).keypress(function (ev) {
+	            var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+	            if (keycode == '13') {
+	                fnc.call(this, ev);
+	            }
+	        })
+	    })
+	}
+	
+	$("#input").enterKey(function () {
+    	$("#inloggen").click();
+	})
+	$("#input2").enterKey(function () {
+    	$("#inloggen").click();
+	})
+</script>
+</body>
+</html>

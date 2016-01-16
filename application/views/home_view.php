@@ -49,14 +49,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="ui vertical stripe segment">
     <div class="ui middle aligned stackable grid container">
       <div class="row">
-        <div class="eight wide column">
+        <div class="seven wide column">
           <h3 class="ui header">Welkom!</h3>
           <p>Welkom op de website van zeilschool De Waai. Wij zijn de specialist in het verzorgen van complete zeilcursussen in het mooie Friese Gaasterland in het plaatsje Warns. Onze cursussen worden verzorgd door een team ervaren zeilinstructeurs en activiteitenbegeleiders. Tijdens uw verblijf op onze zeilschool komt u niets tekort. Zo hebben wij een gezellig restaurant, een bar en verzorgen wij ook avondprogramma's, zoals spelprogramma's voor kinderen, droppings voor de wat oudere deelnemer, en karaokeavonden.</p>
-          <h3 class="ui header">Locatie</h3>
-          <p>Onze zeilschool ligt op loopafstand van het centrum van Warns aan de Ymedaem vlakbij de meren de Geeuw en Morra en met een open vaarverbinding naar de Fluessen! Voor overnachting kunt u terecht bij hotel De Preatert, dat naast onze zeilschool ligt. Dit hotel is recentelijk geopend en dus een aanwinst voor de recreatie in onze regio.</p>
         </div>
-        <div class="six wide right floated column">
-          
+        <div class="seven wide right floated column" style="height: 305px;">
+         <h3 class="ui header">Locatie</h3>
+          <p>Onze zeilschool ligt op loopafstand van het centrum van Warns aan de Ymedaem vlakbij de meren de Geeuw en Morra en met een open vaarverbinding naar de Fluessen! Voor overnachting kunt u terecht bij hotel De Preatert, dat naast onze zeilschool ligt. Dit hotel is recentelijk geopend en dus een aanwinst voor de recreatie in onze regio.</p>
         </div>
       </div>
       <div class="row">
@@ -76,29 +75,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <p>Jens Jonkman</p>
         </div>
         <div class="column">
-          <h3>"I r8 8/8 m8."</h3>
+          <h3>"Een ervaring om nooit te vergeten!"</h3>
           <p>
-             Jelle Schuurmans
+          		Jelle Schuurmans
           </p>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- <div class="ui vertical stripe segment">
-    <div class="ui text container">
-      <h3 class="ui header">Breaking The Grid, Grabs Your Attention</h3>
-      <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.</p>
-      <a class="ui large button">Read More</a>
-      <h4 class="ui horizontal header divider">
-        <a href="#">Case Studies</a>
-      </h4>
-      <h3 class="ui header">Did We Tell You About Our Bananas?</h3>
-      <p>Yes I know you probably disregarded the earlier boasts as non-sequitor filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
-      <a class="ui large button">I'm Still Quite Interested</a>
-    </div>
-  </div> -->
-
 <?php include 'layout/footer.php'; ?>
   
 </div>

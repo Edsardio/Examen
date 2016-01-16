@@ -175,6 +175,8 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 </div>
+
+<?php include 'layout/footer.php'; ?>
 <script>
     $('center .button').on('click', function(){
         modal = $(this).attr('data-modal');

@@ -16,12 +16,6 @@ class Boten extends CI_Controller{
 		// $this->load->view('admin/crud_footer');
 	}
 	
-	public function add(){
-		// $this->load->view('admin/crud_header');
-		$this->load->view('admin/nieuwe_boot_view');
-		// $this->load->view('admin/crud_footer');
-	}
-	
 	public function edit(){
 		$kd = $this->uri->segment(4);
 		if($kd == NULL){

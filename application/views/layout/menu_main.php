@@ -35,6 +35,20 @@ if($_SESSION['user_group'] === '2'){
 					<div class="item" style="color: black;">
 						Reserveringenbeheer
 					</div></a>
+					<a href="<?= $this -> config -> base_url(); ?>admin/inplannen">
+					<div class="item" style="color: black;">
+						Cursus inplannen
+					</div></a>
+					<?php
+					if($_SESSION['admin_group'] === '3'){
+						?>
+						<a href="<?= $this -> config -> base_url(); ?>admin/editgroups">
+						<div class="item" style="color: black;">
+							Rollenbeheer
+						</div></a>
+						<?php
+					}
+					?>
 				</div>
 			</div>
 			<?php

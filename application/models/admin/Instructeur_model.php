@@ -38,6 +38,11 @@ class Instructeur_model extends CI_Model{
 	}
 	
 	public function delete($a){
+		$data = array(
+			'instructeur_id' => NULL
+		);
+		$this->db->where('instructeur_id', $a);
+		$this->db->update('koppelingen', $data);
 		$this->db->delete('instructeurs', array('instructeur_id' => $a));
 		return;
 	}

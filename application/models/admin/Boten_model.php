@@ -9,7 +9,7 @@ class Boten_model extends CI_Model{
 	public function add(){
 		$bootnaam = $this->input->post('bootnaam');
 		$bouwjaar = $this->input->post('bouwjaar');
-		$type = $this->input->post('boottype');
+		$type = $this->input->post('type_id');
 		$data = array(
 			'bootnaam' => $bootnaam,
 			'bouwjaar' => $bouwjaar,
@@ -40,11 +40,16 @@ class Boten_model extends CI_Model{
 	}
 	
 	public function delete($a){
+		$data = array(
+			'boot_id' => NULL
+		);
+		$this->db->where('boot_id', $a);
+		$this->db->update('koppelingen', $data);
 		$this->db->delete('boten', array('boot_id' => $a));
 		return;
 	}
 	
-	public function update($id){
+	public function update($a){
 		$bootnaam = $this->input->post('bootnaam');
 		$bouwjaar = $this->input->post('bouwjaar');
 		$type = $this->input->post('boottype');
@@ -53,7 +58,7 @@ class Boten_model extends CI_Model{
 			'bouwjaar' => $bouwjaar,
 			'type_id' => $type
 		);
-		$this->db->where('boot_id', $id);
+		$this->db->where('boot_id', $a);
 		$this->db->update('boten', $data);
 	}
 }

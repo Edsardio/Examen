@@ -66,8 +66,8 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body class="pushable">
 <?php include 'layout/menu_follow.php'; ?>
-<div class="pusher">
-	<div id="headerpicture" class="ui inverted vertical masthead aligned segment" style="background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
+<div class="pusher" style="    background-attachment: fixed;background-image: url('http://www.kwartvoorhalfvijf.nl/examen/application/views/assets/img/sunset-sailing.jpg');">
+	<div id="headerpicture" class="ui inverted vertical masthead aligned segment" style="background-color: transparent;">
 		<?php
 		include 'layout/menu_main.php';
 		?>
@@ -112,7 +112,7 @@ if (!isset($_SESSION['user_id'])) {
 								<td><?= $row->einddatum; ?></td>
 								<td><?= $row->niveau; ?></td>
 								<td>
-									<a href="<?= site_url('inschrijven/cursus/' . $row->cursus_id); ?>"><button>Inschrijven</button></a>
+									<a href="<?= site_url('inschrijven/cursus/' . $row->cursus_id); ?>"><button class="ui button">Inschrijven</button></a>
 								</td>
 							</tr>
 							<?php
@@ -133,6 +133,7 @@ if (!isset($_SESSION['user_id'])) {
 		</div>
 	</div>
 </div>
+
 <?php include 'layout/footer.php'; ?>
 </body>
 </html>

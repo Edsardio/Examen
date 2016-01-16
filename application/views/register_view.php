@@ -249,6 +249,4 @@ if (isset($_SESSION['user_id'])) {
 		echo '</div>';
 	}
 	?>
-
-</body>
 </html>

@@ -9,26 +9,48 @@ class Editgroups extends CI_Controller{
 
     public function index(){
         $data['data_get'] = $this->Editgroups_model->view();
-        $data['fillSelect'] = $this->Editgroups_model->getRoles();
         $this->load->view('admin/editgroups_view', $data);
     }
 
 
-    public function edit(){
+    public function getUser()
+    {
         $kd = $this->uri->segment(4);
+
         if($kd == NULL){
-            redirect('admin/Instructeur');
+            redirect('editgroups');
         }
-        $dt = $this->Instructeur_model->edit($kd);
-        $data['voornaam'] = $dt[0]->instructeur_voornaam;
-        $data['tussenvoegsel'] = $dt[0]->instructeur_tussenvoegsel;
-        $data['achternaam'] = $dt[0]->instructeur_achternaam;
-        $data['geslacht'] = $dt[0]->instructeur_geslacht;
-        $data['email'] = $dt[0]->instructeur_email;
-        $data['id'] = $kd;
-        $this->load->view('admin/crud_header');
-        $this->load->view('admin/bewerk_instructeur_view', $data);
-        $this->load->view('admin/crud_footer');
+        $dt = $this->Editgroups_model->getUserRoles($kd);
+        $data['klant_id'] = $kd;
+        $data['voornaam'] = $dt[0]->voornaam;
+        $data['tussenvoegsel'] = $dt[0]->tussenvoegsel;
+        $data['achternaam'] = $dt[0]->achternaam;
+        $data['geboortedatum'] = $dt[0]->geboortedatum;
+        $data['geslacht'] = $dt[0]->geslacht;
+        $data['adres'] = $dt[0]->adres;
+        $data['postcode'] = $dt[0]->postcode;
+        $data['woonplaats'] = $dt[0]->woonplaats;
+        $data['telefoonnummer'] = $dt[0]->telefoonnummer;
+        $data['mobiel'] = $dt[0]->mobiel;
+        $data['email'] = $dt[0]->email;
+        $data['group_id'] = $dt[0]->group_id;
+        $data['group_name'] = $dt[0]->group_name;
+
+        $this->load->view('admin/bewerk_group_view', $data);
+
+    }
+
+    public function updateGroup()
+    {
+        if ($this->input->post('button')) {
+            $klant_id = $this->input->post('klant_id');
+            $group_id = $this->input->post('group_id');
+            $this->Editgroups_model->updateUserRoles($klant_id, $group_id);
+            redirect('admin/Editgroups');
+        } else {
+            $klant_id = $this->input->post('klant_id');
+            redirect('admin/Editgroups/getUser/"' . $klant_id . '"');
+        }
     }
 
 }

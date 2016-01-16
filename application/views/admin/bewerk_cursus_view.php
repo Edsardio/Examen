@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-if (!isset($_SESSION['user_id'])) {
-	header('Location: home');
+if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
+	header('Location: ../home');
 }
 ?>
 <!DOCTYPE html>

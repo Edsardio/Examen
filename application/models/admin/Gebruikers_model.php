@@ -55,6 +55,11 @@ class Gebruikers_model extends CI_Model{
 	}
 	
 	public function delete($a){
+		$data = array(
+			'klant_id' => NULL
+		);
+		$this->db->where('klant_id', $a);
+		$this->db->update('koppelingen', $data);
 		$this->db->delete('user_group', array('klant_id' => $a));
 		$this->db->delete('klanten', array('klant_id' => $a));
 		return;

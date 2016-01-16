@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
+	header('Location: ../home');
+}
 ?>
 <!DOCTYPE html>
 <head>
@@ -85,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<td><?= $row -> einddatum; ?></td>
 								<td><?= $row -> niveau; ?></td>
 								<td>
-									<a href="<?= site_url('admin/inplannen/cursus/' . $row -> cursus_id); ?>"><button>Inplannen</button></a>
+									<a href="<?= site_url('admin/inplannen/cursus/' . $row -> cursus_id); ?>"><button class="ui button">Inplannen</button></a>
 								</td>
 							</tr>
 							<?php
@@ -97,5 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 	</div>
+	
+<?php include 'layout/footer.php'; ?>
 </body>
 </html>

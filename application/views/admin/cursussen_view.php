@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-if (!isset($_SESSION['user_id'])) {
-	header('Location: home');
+if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
+	header('Location: ../home');
 }
 ?>
 <!DOCTYPE html>
@@ -179,9 +179,21 @@ if (!isset($_SESSION['user_id'])) {
 						<td><?= $row->type_id; ?></td>
 						<td>
 							<a href="<?= site_url('admin/Cursussen/edit/' . $row->cursus_id); ?>" class="btn btn-warning btn-xs"><i class="circular inverted yellow write icon"></i></a>
-							<a href="<?= site_url('admin/Cursussen/delete/' . $row->cursus_id); ?>" class="btn btn-danger btn-xs"><i class="circular inverted red trash outline user icon"></i></a>
+							<a href="#" id="delete<?= $row->cursus_id; ?>" class="btn btn-danger btn-xs"><i class="circular inverted red trash outline user icon"></i></a>
 						</td>
 					</tr>
+					<div class="ui modal delete<?= $row->cursus_id; ?>">
+					  <div class="header">Verwijder cursus: <?= $row->cursusnaam; ?></div>
+					  <div class="content"><p>Weet u zeker dat u de geselecteerde cursus wilt verwijderen?</p></div>
+					  <div class="actions"><div class="negative ui button">Annuleren</div><a href="<?= site_url('admin/Cursussen/delete/' . $row->cursus_id); ?>"><div class="ui positive right labeled icon button">Verwijderen<i class="trash icon"></i></div></a></div>
+					</div>
+					<script>
+					$('#delete<?= $row->cursus_id; ?>').on('click', function(){
+						$('.ui.modal.delete<?= $row->cursus_id; ?>')
+					  		.modal('show')
+						;
+					});
+					</script>
 					<?php 
 				}
 			}
@@ -200,6 +212,8 @@ if (!isset($_SESSION['user_id'])) {
 		</div>
 	</div>
 </div>
+
+<?php include 'layout/footer.php'; ?>
 <script>
 $('center .button').on('click', function(){
 	modal = $(this).attr('data-modal');
