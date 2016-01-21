@@ -15,34 +15,34 @@
 							<div class="header">
 								Beheerderopties
 							</div>
-							<a href="<?= $this -> config -> base_url(); ?>admin/Gebruikers">
+							<a href="<?= site_url('admin/Gebruikers'); ?>">
 							<div class="item" style="color: black;">
 								Gebruikersbeheer
 							</div></a>
-							<a href="<?= $this -> config -> base_url(); ?>admin/Cursussen">
+							<a href="<?= site_url('admin/Cursussen'); ?>">
 							<div class="item" style="color: black;">
 								Cursusbeheer
 							</div></a>
-							<a href="<?= $this -> config -> base_url(); ?>admin/Boten">
+							<a href="<?= site_url('admin/Boten'); ?>">
 							<div class="item" style="color: black;">
 								Botenbeheer
 							</div></a>
-							<a href="<?= $this -> config -> base_url(); ?>admin/Instructeur">
+							<a href="<?= site_url('admin/Instructeur'); ?>">
 							<div class="item" style="color: black;">
 								Instructeurbeheer
 							</div></a>
-							<a href="<?= $this -> config -> base_url(); ?>admin/Reserveringen">
+							<a href="<?= site_url('admin/Reserveringen'); ?>">
 							<div class="item" style="color: black;">
 								Reserveringenbeheer
 							</div></a>
-							<a href="<?= $this -> config -> base_url(); ?>admin/inplannen">
+							<a href="<?= site_url('admin/Inplannen'); ?>">
 							<div class="item" style="color: black;">
 								Cursus inplannen
 							</div></a>
 							<?php
 							if($_SESSION['admin_group'] === '3'){
 								?>
-								<a href="<?= $this -> config -> base_url(); ?>admin/editgroups">
+								<a href="<?= site_url('admin/Editgroups'); ?>">
 								<div class="item" style="color: black;">
 									Rollenbeheer
 								</div></a>

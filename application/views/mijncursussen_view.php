@@ -150,7 +150,7 @@ if (!isset($_SESSION['user_id'])) {
                                 ?>
                                 <tr>
                                     <td><?= $row->cursusnaam; ?></td>
-                                    <td><?= $row->cursusprijs; ?></td>
+                                    <td>€<?= $row->cursusprijs; ?>,-</td>
                                     <td><?= $row->cursusomschrijving; ?></td>
                                     <td><?= $row->startdatum; ?></td>
                                     <td><?= $row->einddatum; ?></td>

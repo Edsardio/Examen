@@ -17,15 +17,35 @@ if (!isset($_SESSION['user_id'])) {
 		<title>Login Example - Semantic</title>
 		<?php include 'layout/scripts.php'
 		?>
-		
-<link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/library/Semantic/components/dropdown.css">
+		<link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/library/Semantic/components/dropdown.css">
+		<style>
+			#headerpicture{
+				background-color:transparent;
+			}
+			body {
+				overflow: hidden;
+				background-color: #dedede;
+			}
+			td {
+				padding-right: 25px;
+				font-size: 16px;
+			}
+			.column {
+				max-width: 450px;
+				text-align: left;
+				top: -550px;
+			}
+			#details {
+				text-align: left;
+			}
+		</style>
 	</head>
 	<body class="pushable">
 		<?php
 		include 'layout/menu_follow.php';
 		?>
-		<div class="pusher">
-			<div id="headerpicture" class="ui inverted vertical masthead aligned segment" style="background-image:url('<?= $this -> config -> base_url(); ?>application/views/assets/img/sunset-sailing.jpg'); background-repeat: no-repeat;">
+		<div class="pusher" style="background-image:url('<?= $this -> config -> base_url(); ?>application/views/assets/img/sunset-sailing.jpg'); background-repeat: no-repeat;">
+			<div id="headerpicture" class="ui inverted vertical masthead aligned segment">
 				<?php
 				include 'layout/menu_main.php';
 				?>
@@ -37,7 +57,6 @@ if (!isset($_SESSION['user_id'])) {
 					<div class="content">
 						Gebruikersgegevens
 					</div></h2>
-					<?= form_open('Login/validate_credentials', 'class="ui large form'); ?>
 					<div class="ui stacked segment">
 						<div id="details"></div>
 					</div>
@@ -46,24 +65,6 @@ if (!isset($_SESSION['user_id'])) {
 					</div>
 				</div>
 			</div>
-			<style>
-				body {
-					overflow: hidden;
-					background-color: #dedede;
-				}
-				td {
-					padding-right: 25px;
-					font-size: 16px;
-				}
-				.column {
-					max-width: 450px;
-					text-align: left;
-					top: -550px;
-				}
-				#details {
-					text-align: left;
-				}
-			</style>
 			<div class="ui middle aligned center aligned grid">
 				<div class="column">
 					<div class="ui header">
@@ -72,9 +73,7 @@ if (!isset($_SESSION['user_id'])) {
 				</div>
 			</div>
 			<input type="hidden" data-url="<?=$this -> config -> base_url(); ?>" id="data-url">
-			<div id="container">
-
-			</div>
+			<div id="container"></div>
 		</div>
 		<?php
 		include 'layout/footer.php';

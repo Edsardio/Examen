@@ -3,9 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cursussen_model extends CI_Model{
 	public function __construct(){
+		//Laad de database in voor de volledige class
+		//Database is aan te roepen als $this->db
 		$this->load->database();
 	}
 	
+	//Haal de gegevens van de nieuwe cursus op uit het formulier en voeg deze toe aan de database
 	public function add(){
 		$naam = $this->input->post('cursusnaam');
 		$prijs = $this->input->post('cursusprijs');
@@ -26,6 +29,7 @@ class Cursussen_model extends CI_Model{
 		$this->db->insert('cursussen', $data);
 	}
 	
+	//Haal de gegevens van alle cursussen op uit de database
 	public function view(){
 		$data = $this->db->get('cursussen');
 		if($data->num_rows() > 0){
@@ -39,6 +43,8 @@ class Cursussen_model extends CI_Model{
 		}
 	}
 	
+	//Haal de gegevens van een specifieke cursus op uit de database
+	//@param INT $a het cursus_id
 	public function edit($a){
 		$d = $this->db->query('SELECT * FROM cursussen INNER JOIN typen WHERE cursussen.cursus_id = '. $a .' AND typen.type_id = cursussen.type_id');
 		$type = $this->db->query('SELECT * FROM typen');
@@ -47,6 +53,8 @@ class Cursussen_model extends CI_Model{
 		return $response;
 	}
 	
+	//Verwijder een cursus door middel van het ID
+	//@param INT $a het cursus_id
 	public function delete($a){
 		$data = array(
 			'cursus_id' => NULL
@@ -57,6 +65,8 @@ class Cursussen_model extends CI_Model{
 		return;
 	}
 	
+	//Update een cursus in de database door middel van het ID
+	//@param INT $a het cursus_id
 	public function update($id){
 		$naam = $this->input->post('cursusnaam');
 		$prijs = $this->input->post('cursusprijs');

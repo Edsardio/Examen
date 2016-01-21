@@ -3,9 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Instructeur_model extends CI_Model{
 	public function __construct(){
+		//Laad de database in voor de volledige class
+		//Database is aan te roepen als $this->db
 		$this->load->database();
 	}
 	
+	//Haal de gegevens van de nieuwe instructeur op uit het formulier en voeg deze toe aan de database
 	public function add(){
 		$voornaam = $this->input->post('instructeur_voornaam');
 		$tussenvoegsel = $this->input->post('instructeur_tussenvoegsel');
@@ -22,6 +25,7 @@ class Instructeur_model extends CI_Model{
 		$this->db->insert('instructeurs', $data);
 	}
 	
+	//Haal de gegevens van alle instructeurs op uit de database
 	public function view(){
 		$data = $this->db->get('instructeurs');
 		if($data->num_rows() > 0){
@@ -32,11 +36,15 @@ class Instructeur_model extends CI_Model{
 		}
 	}
 	
+	//Haal de gegevens van een specifieke instructeur op uit de database
+	//@param INT $a het instructeur_id
 	public function edit($a){
 		$d = $this->db->get_where('instructeurs', array('instructeur_id' => $a));
 		return $d->result();
 	}
 	
+	//Verwijder een instructeur door middel van het ID
+	//@param INT $a het instructeur_id
 	public function delete($a){
 		$data = array(
 			'instructeur_id' => NULL
@@ -47,6 +55,8 @@ class Instructeur_model extends CI_Model{
 		return;
 	}
 	
+	//Update een instructeur in de database door middel van het ID
+	//@param INT $a het instructeur_id
 	public function update($id){
 		$voornaam = $this->input->post('instructeur_voornaam');
 		$tussenvoegsel = $this->input->post('instructeur_tussenvoegsel');

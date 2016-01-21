@@ -4,18 +4,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Boten extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
+		//Laad de model voor de gehele controller
+		//Model word aangeropen als $this->Boten_model
 		$this->load->model('admin/Boten_model');
 	}
 	
+	//Laad de view met alle bootgegevens
 	public function index(){
 		$dt = $this->Boten_model->view();
 		$data['data_get'] = $dt['d'];
 		$data['typen'] = json_encode($dt['type']);
-		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/boten_view', $data);
-		// $this->load->view('admin/crud_footer');
 	}
 	
+	//Laad de view met de gegevens van een specifieke boot om deze aan te kunnen passen
 	public function edit(){
 		$kd = $this->uri->segment(4);
 		if($kd == NULL){
@@ -27,17 +29,17 @@ class Boten extends CI_Controller{
 		$data['boottype'] = $dt['d'][0]->type_id;
 		$data['typen'] = json_encode($dt['type']);
 		$data['id'] = $kd;
-		// $this->load->view('admin/crud_header');
 		$this->load->view('admin/bewerk_boot_view', $data);
-		// $this->load->view('admin/crud_footer');
 	}
 	
+	//Verwijder de boot aan de hand van het ID
 	public function delete(){
 		$u = $this->uri->segment(4);
 		$this->Boten_model->delete($u);
 		redirect('admin/Boten');
 	}
 	
+	//Sla een nieuwe boot op in de database
 	public function save(){
 		if($this->input->post('mit')){
 			$this->Boten_model->add();
@@ -47,6 +49,7 @@ class Boten extends CI_Controller{
 		}
 	}
 	
+	//Update de gegevens van een boot in de database
 	public function update(){
 		if($this->input->post('mit')){
 			$id = $this->input->post('id');

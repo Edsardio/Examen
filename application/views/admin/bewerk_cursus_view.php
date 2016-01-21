@@ -111,9 +111,9 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 					<div class="field">
 						<h5>Niveau</h5>
 						<select id="niveau" name="niveau" class="form-control">
-							<option value="<?=$niveau;?>"><?=$niveau;?></option>
-							<option value="Beginner">Beginner</option>
-							<option value="Gevorderde">Gevorderde</option>
+							<option <?php if($niveau == 'Beginner'){echo 'selected';}?> value="Beginner">Beginner</option>
+							<option <?php if($niveau == 'Gevorderde'){echo 'selected';}?> value="Gevorderde">Gevorderde</option>
+							<option <?php if($niveau == 'Wadtocht'){echo 'selected';}?> value="Wadtocht">Wadtocht</option>
 						</select>
 					</div>
 					<div class="field">

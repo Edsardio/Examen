@@ -95,6 +95,9 @@ if (isset($_SESSION['user_id'])) {
     	if(isset($response)){
     		echo '<div class="ui content header message large">' . $response . '</div>';
     	}
+        if(isset($checkinlog)){
+        echo '<div class="ui content header message large">' . $checkinlog . '</div>';
+        }
     	?>
       <div class="ui stacked segment">
         <div class="field">

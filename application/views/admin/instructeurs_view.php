@@ -18,7 +18,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 	<?php include 'layout/scripts.php' ?>
 
 	<link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/library/Semantic/components/dropdown.css">
-	<script>
+	<link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/style/admin.css">
+		<script>
 		$(document).ready(function() {
 			// fix menu when passed
 			$('.masthead').visibility({
@@ -35,44 +36,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 
 		});
 	</script>
-	<style>
-		body {
-			overflow: scroll;
-		}
-		th{
-			margin-bottom:10px;
-		}
-		tr:nth-child(even) {
-			background-color: #f2f2f2
-		}
-		tr:hover{
-			background-color:yellow;
-		}
-		td {
-			max-width:230px;
-			font-size: 13px;
-			text-align:center;
-		}
-		.column {
-			max-width: 1000px;
-			text-align: left;
-			top: -550px;
-		}
-		#details {
-			text-align: left;
-		}
-		.close{
-			width: 100px;
-		    height: 36px;
-		}
-	</style>
 </head>
 <body class="pushable">
 <?php include 'layout/menu_follow.php'; ?>
 <div class="pusher" style="background-attachment: fixed; background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
 <!-- Modal Edit User -->
 		<div class="ui small modal" id="create_user">
-			<div class="header">Cree&#235;er Instructeur</div>
+			<div class="header">Maak nieuwe Instructeur</div>
 			<div class="content">
 				<?= form_open('admin/Instructeur/save', 'role="form" class="ui form"'); ?>
 					<div class="field">
@@ -113,23 +83,22 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 		include 'layout/menu_main.php';
 		?>
 	</div>
-
 	<div class="ui middle aligned center aligned grid">
 		<div class="row">
-			<div class="six wide column" style="margin-left: 3px;">
+			<div class="six wide column">
 				<div class="ui segment">
 					<h2>
 						Instructeurs
 					</h2>
 				</div>
 			</div>
-			<div class="two wide right aligned column create_user" style="margin-left:55px;">
+			<div class="eight wide right aligned column create_user">
 				<center>
 					<button data-modal="create_user" id="call-modal-4" class="ui large primary button">Nieuwe Instructeur</button>
 				</center>
 			</div>
 		</div>
-		<div class="sixteen wide column">
+		<div class="fourteen wide column" style="max-width:none;">
 			<div class="ui stacked segment">
 				<table class="ui celled table">
 				<thead>

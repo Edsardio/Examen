@@ -18,6 +18,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 	<?php include 'layout/scripts.php' ?>
 
 	<link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/library/Semantic/components/dropdown.css">
+	<link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/style/admin.css">
 	<script>
 		$(document).ready(function() {
 			// fix menu when passed
@@ -35,44 +36,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 
 		});
 	</script>
-	<style>
-		body {
-			overflow: scroll;
-		}
-		th{
-			margin-bottom:10px;
-		}
-		tr:nth-child(even) {
-			background-color: #f2f2f2
-		}
-		tr:hover{
-			background-color:yellow;
-		}
-		td {
-			max-width:230px;
-			font-size: 13px;
-			text-align:center;
-		}
-		.column {
-			max-width: 1000px;
-			text-align: left;
-			top: -550px;
-		}
-		#details {
-			text-align: left;
-		}
-		.close{
-			width: 100px;
-		    height: 36px;
-		}
-	</style>
 </head>
 <body class="pushable">
 <?php include 'layout/menu_follow.php'; ?>
 <div class="pusher" style="background-attachment: fixed; background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
 <!-- Modal Edit User -->
 		<div class="ui small modal" id="create_user">
-			<div class="header">Cre&#235;er Nieuwe Gebruiker</div>
+			<div class="header">Maak een nieuwe Gebruiker</div>
 			<div class="content">
 				<?= form_open('admin/Gebruikers/save', 'role="form" class="ui form"'); ?>
 					<div class="field">
@@ -215,7 +185,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 									</td>
 								</tr>
 								<div class="ui modal delete<?= $row->klant_id; ?>">
-								  <div class="header">Verwijder klant: <?= $row->klant_voornaam . $row->klant_tussenvoegsel . $row->klant_achternaam; ?></div>
+								  <div class="header">Verwijder klant: <?= $row->voornaam; ?> <?= $row->tussenvoegsel; ?> <?= $row->achternaam; ?></div>
 								  <div class="content"><p>Weet u zeker dat u de geselecteerde klant wilt verwijderen?</p></div>
 								  <div class="actions"><div class="negative ui button">Annuleren</div><a href="<?= site_url('admin/Gebruikers/delete/' . $row->klant_id); ?>"><div class="ui positive right labeled icon button">Verwijderen<i class="trash icon"></i></div></a></div>
 								</div>

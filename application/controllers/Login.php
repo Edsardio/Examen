@@ -13,8 +13,10 @@ class Login extends CI_Controller {
  	}
  	
 	function login(){
+		//Post email and password
 		$email = $_POST['email'];
 		$password = $_POST['password'];
+		// CheckUser model db
 		echo $this->Login_model->checkUser($email, $password);
 	}
 

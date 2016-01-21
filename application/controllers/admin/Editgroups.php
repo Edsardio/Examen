@@ -8,6 +8,7 @@ class Editgroups extends CI_Controller{
     }
 
     public function index(){
+        //Stuurt alle user met gegevens naar de view
         $data['data_get'] = $this->Editgroups_model->view();
         $this->load->view('admin/editgroups_view', $data);
     }
@@ -15,6 +16,7 @@ class Editgroups extends CI_Controller{
 
     public function getUser()
     {
+        //Haal user gegevens op aan de hand van het id
         $kd = $this->uri->segment(4);
 
         if($kd == NULL){
@@ -42,6 +44,7 @@ class Editgroups extends CI_Controller{
 
     public function updateGroup()
     {
+        //Update user
         if ($this->input->post('button')) {
             $klant_id = $this->input->post('klant_id');
             $group_id = $this->input->post('group_id');

@@ -1,0 +1,32 @@
+		body > .grid {
+			height: 100%;
+		}
+		.field > label{
+			float:left;
+		}
+		.image {
+			margin-top: -100px;
+		}
+		.column {
+			max-width: 750px;
+		}
+		.asterisk{
+			color: red;
+		}
+		#arrow-left {
+			width: 32px;
+		}
+		.arrow-left {
+			position: absolute;
+			margin: 5px;
+			top: 0;
+		}
+		.fielderror > p{    
+			padding: .5833em .833em;
+		    color: #db2828!important;
+		    border-color: #db2828!important;
+	        border: 1px solid rgba(34,36,38,.15);
+      	  	display: inline-block;
+      	  	border-radius: .28571429rem;
+   		 	line-height: 1;
+		}

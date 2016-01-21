@@ -100,8 +100,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
                 </table>
                 <div class="field">
                     <h5>Group ID</h5>
-                    <b>Opmerking: Group_id: 1 = Klant, &nbsp; Group_id: 2 = Beheerder</b>
-                    <input type="text" class="form-control" id="group_id" name="group_id" value="<?=$group_id;?>">
+                    <select name="group_id" id="group_id">
+                    	<option <?php if($group_id == '1'){echo 'selected';}?> value="1">Klant</option>
+                    	<option <?php if($group_id == '2'){echo 'selected';}?> value="2">Beheerder</option>
+                    </select>
                 </div>
                 <input type="hidden" name="klant_id" value="<?= $klant_id; ?>" />
                 <input type="submit" name="button" class="ui button primary" value="Opslaan">

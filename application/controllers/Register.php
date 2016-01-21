@@ -15,6 +15,7 @@ class Register extends CI_Controller {
 	}
 
 	function check_captcha() {
+		// Checked op de captcha is ingevuld.
 		if (isset($_POST['submit'])) {
 			$userIP = $_SERVER["REMOTE_ADDR"];
 			$recaptchaResponse = $_POST['g-recaptcha-response'];
@@ -31,6 +32,7 @@ class Register extends CI_Controller {
 	}
 
 	function accept_terms() {
+		//Checkt of de algemene voorwaarden zijn geaccepteerd
 		if ($this -> input -> post('accept_terms_checkbox')) {
 			return TRUE;
 		} else {
@@ -41,6 +43,7 @@ class Register extends CI_Controller {
 	}
 
 	public function create_member() {
+		//Create de member met form validation
 		$this -> load -> library('form_validation');
 
 		$this -> form_validation -> set_rules('voornaam', 'Voornaam', 'trim|required|min_length[3]|max_length[25]');

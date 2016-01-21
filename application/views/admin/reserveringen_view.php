@@ -18,6 +18,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 	<?php include 'layout/scripts.php' ?>
 
 	<link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/library/Semantic/components/dropdown.css">
+	<link rel="stylesheet" type="text/css" href="<?= $this -> config -> base_url(); ?>application/views/assets/style/admin.css">
 	<script>
 		$(document).ready(function() {
 			// fix menu when passed
@@ -35,37 +36,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_group'] != '2') {
 
 		});
 	</script>
-	<style>
-		body {
-			overflow: scroll;
-		}
-		th{
-			margin-bottom:10px;
-		}
-		tr:nth-child(even) {
-			background-color: #f2f2f2;
-		}
-		tr:hover{
-			background-color:yellow;
-		}
-		td {
-			max-width:230px;
-			font-size: 13px;
-			text-align:center;
-		}
-		.column {
-			max-width: 1000px;
-			text-align: left;
-			top: -550px;
-		}
-		#details {
-			text-align: left;
-		}
-		.close{
-			width: 100px;
-		    height: 36px;
-		}
-	</style>
 </head>
 <body class="pushable">
 <?php include 'layout/menu_follow.php'; ?>

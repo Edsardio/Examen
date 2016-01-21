@@ -57,11 +57,14 @@ $description = array('id' => 'description', 'placeholder' => 'Eventuele opmerkin
 			width: 100px;
 		    height: 36px;
 		}
+		#buttons{
+		    margin: 0 auto;
+		}
 	</style>
 </head>
 <body class="pushable">
 <?php include 'layout/menu_follow.php'; ?>
-<div class="pusher" style="background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
+<div class="pusher" style="background-attachment: fixed;background-image:url('<?= $this->config->base_url(); ?>application/views/assets/img/sunset-sailing.jpg');">
 <!-- Modal Edit User -->
 	<div id="headerpicture" class="ui inverted vertical masthead aligned segment">
 		<?php
@@ -90,7 +93,7 @@ $description = array('id' => 'description', 'placeholder' => 'Eventuele opmerkin
 					</tr>
 					<tr>
 						<td>Cursusprijs</td>
-						<td><?=$cursusprijs;?></td>
+						<td>€<?=$cursusprijs;?>,-</td>
 					</tr>
 					<tr>
 						<td>Cursusomschrijving</td>
@@ -105,11 +108,21 @@ $description = array('id' => 'description', 'placeholder' => 'Eventuele opmerkin
 						<td><?=$einddatum;?></td>
 					</tr>
 				</table>
-				
 				<?= form_textarea($description); ?> <br>
-				<input type="submit" class"ui button" value="Inschrijven"><a href="<?= site_url('inschrijven/inschrijven/' . $cursus_id); ?>"></a></input>
-				</form>
-			<?= form_close(); ?>
+				<table id="buttons">
+					<tr>
+						<td>
+							<input type="submit" class="ui primary button" value="Inschrijven"><a href="<?= site_url('inschrijven/inschrijven/' . $cursus_id); ?>"></a></input>
+							</form>
+						</td>
+						<td>
+							<?= form_close(); ?>
+							<a href="<?= site_url('inschrijven'); ?>">Annuleren</a>
+						</td>
+					</tr>
+				</table>
+					
+					
 			</div>
 		</div>
 		<div class="five wide column"></div>
@@ -123,7 +136,5 @@ $description = array('id' => 'description', 'placeholder' => 'Eventuele opmerkin
 		</div>
 	</div>
 </div>
-
-<?php include 'layout/footer.php'; ?>
 </body>
 </html>

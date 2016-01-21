@@ -3,9 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Gebruikers_model extends CI_Model{
 	public function __construct(){
+		//Laad de database in voor de volledige class
+		//Database is aan te roepen als $this->db
 		$this->load->database();
 	}
 	
+	//Haal de gegevens van de nieuwe gebruiker op uit het formulier en voeg deze toe aan de database
 	public function add(){
 		$voornaam = $this->input->post('voornaam');
 		$tussenvoegsel = $this->input->post('tussenvoegsel');
@@ -39,6 +42,7 @@ class Gebruikers_model extends CI_Model{
 		$this->db->query('INSERT INTO `user_group` (`klant_id`, `group_id`) VALUES ("' . $this->db->insert_id() . '", "1")');
 	}
 	
+	//Haal de gegevens van alle gebruikers op uit de database
 	public function view(){
 		$data = $this->db->get('klanten');
 		if($data->num_rows() > 0){
@@ -49,11 +53,15 @@ class Gebruikers_model extends CI_Model{
 		}
 	}
 	
+	//Haal de gegevens van een specifieke klant op uit de database
+	//@param INT $a het klant_id
 	public function edit($a){
 		$d = $this->db->get_where('klanten', array('klant_id' => $a));
 		return $d->result();
 	}
 	
+	//Verwijder een klant door middel van het ID
+	//@param INT $a het klant_id
 	public function delete($a){
 		$data = array(
 			'klant_id' => NULL
@@ -65,6 +73,8 @@ class Gebruikers_model extends CI_Model{
 		return;
 	}
 	
+	//Update een klant in de database door middel van het ID
+	//@param INT $a het klant_id
 	public function update($id){
 		$voornaam = $this->input->post('voornaam');
 		$tussenvoegsel = $this->input->post('tussenvoegsel');
